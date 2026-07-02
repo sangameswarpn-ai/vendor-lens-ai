@@ -1,15 +1,52 @@
-# v0 sandbox internal files
+# Dependencies
+node_modules/
+frontend/node_modules/
+backend/node_modules/
+
+# Next.js Build Output
+.next/
+frontend/.next/
+
+# Local Environment Variables
+.env
+.env*.local
+frontend/.env
+frontend/.env*.local
+backend/.env
+
+# Temporary Files / OS Files
+.DS_Store
+.DS_Store?
+*.log
+backend/logs/
+backend/uploads/
+backend/upload/
+
+# Testing/Coverage
+coverage/
+backend/coverage/
+
+# Build Artifacts
+build/
+dist/
+backend/build/
+backend/dist/
+
+# Vercel and Sandbox Files
+.vercel/
+frontend/.vercel/
+.snowflake/
+.v0-trash/
 __v0_runtime_loader.js
 __v0_devtools.tsx
 __v0_jsx-dev-runtime.ts
-.snowflake/
-.v0-trash/
-.vercel/
 
-# Environment variables
-.env*.local
-
-# Common ignores
-node_modules
-.next/
-.DS_Store
+# IDE / Code Editors
+.vscode/
+.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
