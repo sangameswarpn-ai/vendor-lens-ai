@@ -1,13 +1,12 @@
 "use client"
 
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Plus, Search, Trash2, PencilLine } from 'lucide-react'
 import api from '@/lib/api'
 
 import { AppShell } from '@/components/layout/app-shell'
 import { AuthGuard } from '@/components/app/auth-guard'
 import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 
@@ -49,11 +48,7 @@ export default function VendorsPage() {
   const [showForm, setShowForm] = useState(false)
   const [editingId, setEditingId] = useState<number | null>(null)
 
-  useEffect(() => {
-    fetchVendors()
-  }, [])
-
-  const fetchVendors = async () => {
+  const fetchVendors = useCallback(async () => {
     try {
       const resp = await api.get('/vendors')
       setVendors(resp.data?.data || [])
@@ -61,7 +56,12 @@ export default function VendorsPage() {
       console.error(err)
       window.alert('Unable to load vendors. Please refresh and try again.')
     }
-  }
+  }, [])
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    fetchVendors()
+  }, [fetchVendors])
 
   const filteredVendors = useMemo(() => {
     return vendors.filter((vendor) => vendor.name.toLowerCase().includes(search.toLowerCase()))

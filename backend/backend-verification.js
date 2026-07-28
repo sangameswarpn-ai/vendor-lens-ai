@@ -85,6 +85,7 @@ const run = async () => {
 
   const formData = new FormData();
   formData.append('file', fs.createReadStream(uploadFilePath));
+  formData.append('vendorId', String(vendorId));
   const uploadRes = await axios.post(`${base}/uploads`, formData, {
     headers: {
       Authorization: `Bearer ${token}`,

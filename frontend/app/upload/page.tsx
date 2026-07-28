@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { FileUp, Sparkles, UploadCloud } from 'lucide-react'
 import api from '@/lib/api'
@@ -10,7 +10,6 @@ import { AuthGuard } from '@/components/app/auth-guard'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Progress } from '@/components/ui/progress'
-import { Input } from '@/components/ui/input'
 
 type Vendor = {
   id: number
@@ -28,23 +27,22 @@ export default function UploadPage() {
   const [isAnalyzing, setIsAnalyzing] = useState(false)
   const [progress, setProgress] = useState(0)
 
-  useEffect(() => {
-    fetchVendors()
-  }, [])
-
-  const fetchVendors = async () => {
+  const fetchVendors = useCallback(async () => {
     try {
       const resp = await api.get('/vendors')
       const vendorList = resp.data?.data || []
       setVendors(vendorList)
-      if (vendorList.length > 0 && !selectedVendorId) {
-        setSelectedVendorId(vendorList[0].id)
-      }
+      setSelectedVendorId((prev) => prev ?? (vendorList.length > 0 ? vendorList[0].id : null))
     } catch (err) {
       console.error(err)
       window.alert('Unable to load vendors. Please try again later.')
     }
-  }
+  }, [])
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    fetchVendors()
+  }, [fetchVendors])
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files?.[0]
