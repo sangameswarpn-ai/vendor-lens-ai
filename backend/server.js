@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors({
   origin: process.env.CORS_ORIGIN || '*',
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Bypass-Tunnel-Reminder'],
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
