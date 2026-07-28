@@ -6,11 +6,14 @@ const api = axios.create({
   headers: { 'Content-Type': 'application/json' },
 })
 
-// Request interceptor to attach token
+// Request interceptor to attach token and bypass localtunnel reminder
 api.interceptors.request.use((config) => {
   const token = getToken()
-  if (token && config.headers) {
-    config.headers.Authorization = `Bearer ${token}`
+  if (config.headers) {
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`
+    }
+    config.headers['Bypass-Tunnel-Reminder'] = 'true'
   }
   return config
 })
