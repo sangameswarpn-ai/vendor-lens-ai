@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VendorLens AI | Procurement & Vendor Risk Intelligence Platform</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+    <!-- App Container -->
+    <div class="app-layout" id="appLayout">
+        
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="brand-logo">
+                    <div class="logo-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span class="logo-pulse"></span>
+                    </div>
+                    <div class="logo-text">
+                        <span class="brand-title">VendorLens <span class="gradient-text">AI</span></span>
+                        <span class="brand-tag">Enterprise SaaS</span>
+                    </div>
+                </div>
+                <button class="sidebar-toggle-btn" id="sidebarCollapseBtn" title="Collapse Sidebar">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="sidebar-nav">
+                <div class="nav-section-label">CORE MENU</div>
+                <ul class="nav-list">
+                    <li class="nav-item active">
+                        <a href="#dashboard" class="nav-link">
+                            <i class="fa-solid fa-house nav-icon"></i>
+                            <span class="nav-label">Dashboard</span>
+                            <span class="active-indicator"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#vendors" class="nav-link">
+                            <i class="fa-solid fa-building nav-icon"></i>
+                            <span class="nav-label">Vendor Management</span>
+                            <span class="nav-badge">1,428</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contracts" class="nav-link">
+                            <i class="fa-solid fa-file-contract nav-icon"></i>
+                            <span class="nav-label">Contracts</span>
+                            <span class="nav-badge alert">854</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#ai-risk" class="nav-link">
+                            <i class="fa-solid fa-robot nav-icon"></i>
+                            <span class="nav-label">AI Risk Analysis</span>
+                            <span class="sparkle-tag">AI</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#reports" class="nav-link">
+                            <i class="fa-solid fa-chart-column nav-icon"></i>
+                            <span class="nav-label">Risk Reports</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#compliance" class="nav-link">
+                            <i class="fa-solid fa-shield-cat nav-icon"></i>
+                            <span class="nav-label">Compliance</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="nav-section-label">SYSTEM & ACCESSIBILITY</div>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#notifications" class="nav-link" id="navNotificationsLink">
+                            <i class="fa-solid fa-bell nav-icon"></i>
+                            <span class="nav-label">Notifications</span>
+                            <span class="notification-dot">4</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#settings" class="nav-link">
+                            <i class="fa-solid fa-gear nav-icon"></i>
+                            <span class="nav-label">Settings</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#help" class="nav-link">
+                            <i class="fa-solid fa-circle-question nav-icon"></i>
+                            <span class="nav-label">Help & Docs</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Sidebar Footer Status Card -->
+            <div class="sidebar-footer-card">
+                <div class="ai-shield-status">
+                    <div class="status-indicator-dot online"></div>
+                    <div class="status-info">
+                        <span class="status-title">AI Guardian Engine</span>
+                        <span class="status-sub">Active • 99.8% Accuracy</span>
+                    </div>
+                </div>
+                <button class="logout-btn" id="logoutBtn" title="Logout Session">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <div class="main-wrapper">
+            
+            <!-- TOP NAVBAR -->
+            <header class="top-navbar">
+                <div class="navbar-left">
+                    <button class="mobile-toggle-btn" id="mobileMenuBtn" aria-label="Toggle Navigation">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    
+                    <div class="navbar-brand-mobile">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>VendorLens AI</span>
+                    </div>
+
+                    <!-- Global Search Bar -->
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" id="globalSearchInput" placeholder="Search vendors, contracts, risk alerts... (Ctrl + K)" autocomplete="off">
+                        <span class="search-shortcut">⌘K</span>
+                    </div>
+                </div>
+
+                <div class="navbar-right">
+                    <!-- Live Date & Time Widget -->
+                    <div class="live-clock-widget">
+                        <i class="fa-regular fa-clock clock-icon"></i>
+                        <div class="clock-details">
+                            <span id="liveDate" class="live-date">Tue, 21 Jul 2026</span>
+                            <span id="liveTime" class="live-time">17:16:38 IST</span>
+                        </div>
+                    </div>
+
+                    <!-- Dark Mode Toggle -->
+                    <button class="icon-btn theme-toggle-btn" id="themeToggleBtn" title="Toggle Light/Dark Theme">
+                        <i class="fa-solid fa-moon theme-icon-dark"></i>
+                        <i class="fa-solid fa-sun theme-icon-light"></i>
+                    </button>
+
+                    <!-- Notifications Dropdown Trigger -->
+                    <div class="dropdown-wrapper">
+                        <button class="icon-btn notification-btn" id="notifBellBtn" title="Notifications">
+                            <i class="fa-regular fa-bell"></i>
+                            <span class="notif-badge-pulse" id="notifBadge">4</span>
+                        </button>
+                        
+                        <!-- Notification Dropdown Panel -->
+                        <div class="dropdown-panel notif-dropdown" id="notifDropdown">
+                            <div class="dropdown-header">
+                                <div class="dropdown-title">
+                                    <i class="fa-solid fa-bell text-gradient"></i>
+                                    <span>Notifications</span>
+                                    <span class="badge-count">4 New</span>
+                                </div>
+                                <button class="mark-read-btn" id="markAllReadBtn">Mark all as read</button>
+                            </div>
+                            <div class="notif-list">
+                                <div class="notif-item unread">
+                                    <div class="notif-icon alert-red">
+                                        <i class="fa-solid fa-triangle-exclamation"></i>
+                                    </div>
+                                    <div class="notif-content">
+                                        <p class="notif-text"><strong>AI Risk Alert:</strong> Supplier ABC delivery score dropped significantly.</p>
+                                        <span class="notif-time">2 mins ago</span>
+                                    </div>
+                                </div>
+                                <div class="notif-item unread">
+                                    <div class="notif-icon alert-blue">
+                                        <i class="fa-solid fa-building-circle-check"></i>
+                                    </div>
+                                    <div class="notif-content">
+                                        <p class="notif-text"><strong>New Vendor Registered:</strong> TechNova Global joined system.</p>
+                                        <span class="notif-time">15 mins ago</span>
+                                    </div>
+                                </div>
+                                <div class="notif-item unread">
+                                    <div class="notif-icon alert-purple">
+                                        <i class="fa-solid fa-file-arrow-up"></i>
+                                    </div>
+                                    <div class="notif-content">
+                                        <p class="notif-text"><strong>Contract Uploaded:</strong> MSA-2026-889 ready for AI risk audit.</p>
+                                        <span class="notif-time">1 hour ago</span>
+                                    </div>
+                                </div>
+                                <div class="notif-item unread">
+                                    <div class="notif-icon alert-green">
+                                        <i class="fa-solid fa-shield-check"></i>
+                                    </div>
+                                    <div class="notif-content">
+                                        <p class="notif-text"><strong>Compliance Report Ready:</strong> Q3 Audit report generated successfully.</p>
+                                        <span class="notif-time">3 hours ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dropdown-footer">
+                                <a href="#notifications" class="view-all-link">View All Notifications <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- User Profile Menu -->
+                    <div class="dropdown-wrapper">
+                        <button class="user-profile-btn" id="profileMenuBtn">
+                            <div class="avatar-box">
+                                <span class="avatar-text">PM</span>
+                                <span class="online-indicator"></span>
+                            </div>
+                            <div class="user-info-text">
+                                <span class="user-name">Procurement Manager</span>
+                                <span class="user-role">Enterprise Admin</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-down profile-chevron"></i>
+                        </button>
+
+                        <!-- Profile Dropdown Panel -->
+                        <div class="dropdown-panel profile-dropdown" id="profileDropdown">
+                            <div class="profile-header-card">
+                                <div class="avatar-large">PM</div>
+                                <div class="profile-details">
+                                    <h4>Procurement Manager</h4>
+                                    <p>pm.admin@vendorlens.ai</p>
+                                    <span class="sih-badge">SIH 2026 Grand Finalist</span>
+                                </div>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <ul class="profile-menu-list">
+                                <li><a href="#profile"><i class="fa-regular fa-id-card"></i> Profile & Credentials</a></li>
+                                <li><a href="#settings"><i class="fa-solid fa-sliders"></i> Security & Roles</a></li>
+                                <li><a href="#billing"><i class="fa-solid fa-credit-card"></i> Enterprise License</a></li>
+                                <li><a href="#api"><i class="fa-solid fa-code"></i> AI API Access</a></li>
+                            </ul>
+                            <div class="dropdown-divider"></div>
+                            <div class="profile-footer">
+                                <button class="dropdown-logout-btn" id="dropdownLogoutBtn">
+                                    <i class="fa-solid fa-right-from-bracket"></i> Sign Out
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </header>
+
+            <!-- MAIN CONTENT DISPLAY AREA -->
+            <main class="content-container">
+                
+                <!-- WELCOME BANNER SECTION -->
+                <section class="welcome-section">
+                    <div class="welcome-card glass-card">
+                        <div class="welcome-text-content">
+                            <div class="hero-badge">
+                                <i class="fa-solid fa-bolt-lightning text-sparkle"></i> Real-time AI Risk Intelligence Active
+                            </div>
+                            <h1 class="welcome-heading">Welcome back, <br><span class="gradient-text">Procurement Manager</span></h1>
+                            <p class="welcome-subtitle">
+                                Monitor vendors, contracts and AI-powered procurement insights in real time across global supply chains.
+                            </p>
+                            <div class="welcome-pills">
+                                <span class="pill-item"><i class="fa-solid fa-circle-check text-green"></i> 1,428 Monitored Vendors</span>
+                                <span class="pill-item"><i class="fa-solid fa-shield-virus text-purple"></i> Zero Threat Exposure</span>
+                                <span class="pill-item"><i class="fa-solid fa-chart-line text-blue"></i> 99.4% SLA Compliance</span>
+                            </div>
+                        </div>
+                        <div class="welcome-illustration-wrapper">
+                            <div class="ai-orb-graphic">
+                                <div class="orb-ring ring-1"></div>
+                                <div class="orb-ring ring-2"></div>
+                                <div class="orb-ring ring-3"></div>
+                                <div class="orb-center">
+                                    <i class="fa-solid fa-brain"></i>
+                                    <span>AI Risk Core</span>
+                                </div>
+                                <div class="floating-badge badge-1">
+                                    <i class="fa-solid fa-shield-check text-green"></i> 94% Compliant
+                                </div>
+                                <div class="floating-badge badge-2">
+                                    <i class="fa-solid fa-clock-rotate-left text-blue"></i> Real-Time Sync
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- QUICK ACTION BUTTONS -->
+                <section class="quick-actions-section">
+                    <div class="section-header-row">
+                        <h2 class="section-title"><i class="fa-solid fa-wand-magic-sparkles text-gradient"></i> Quick Executive Actions</h2>
+                        <span class="section-sub">Instant procurement tasks & AI automated triggers</span>
+                    </div>
+                    <div class="quick-actions-grid">
+                        <button class="action-btn primary-glow" id="btnAddVendor">
+                            <div class="btn-icon"><i class="fa-solid fa-user-plus"></i></div>
+                            <div class="btn-label">
+                                <span>Add Vendor</span>
+                                <small>Onboard new supplier</small>
+                            </div>
+                        </button>
+                        <button class="action-btn secondary-glow" id="btnUploadContract">
+                            <div class="btn-icon"><i class="fa-solid fa-file-arrow-up"></i></div>
+                            <div class="btn-label">
+                                <span>Upload Contract</span>
+                                <small>Scan & extract terms</small>
+                            </div>
+                        </button>
+                        <button class="action-btn accent-glow" id="btnGenerateReport">
+                            <div class="btn-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                            <div class="btn-label">
+                                <span>Generate AI Report</span>
+                                <small>Full risk audit PDF</small>
+                            </div>
+                        </button>
+                        <button class="action-btn ai-pulse-glow" id="btnRunAnalysis">
+                            <div class="btn-icon"><i class="fa-solid fa-microchip"></i></div>
+                            <div class="btn-label">
+                                <span>Run AI Analysis</span>
+                                <small>Batch risk screening</small>
+                            </div>
+                        </button>
+                        <button class="action-btn neutral-glow" id="btnExportData">
+                            <div class="btn-icon"><i class="fa-solid fa-download"></i></div>
+                            <div class="btn-label">
+                                <span>Export Report</span>
+                                <small>CSV / Excel / JSON</small>
+                            </div>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- SUMMARY CARDS SECTION (6 Animated Cards) -->
+                <section class="summary-cards-section">
+                    <div class="cards-grid">
+                        
+                        <!-- Card 1: Total Vendors -->
+                        <div class="summary-card glass-card hover-lift">
+                            <div class="card-top">
+                                <div class="card-icon-box icon-blue">
+                                    <i class="fa-solid fa-building-user"></i>
+                                </div>
+                                <div class="card-trend trend-up">
+                                    <i class="fa-solid fa-arrow-trend-up"></i> +12.4%
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="counter-number" data-target="1428">0</div>
+                                <div class="card-title">Total Vendors</div>
+                            </div>
+                            <div class="card-footer-bar">
+                                <span class="bar-fill fill-blue" style="width: 84%;"></span>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Active Contracts -->
+                        <div class="summary-card glass-card hover-lift">
+                            <div class="card-top">
+                                <div class="card-icon-box icon-purple">
+                                    <i class="fa-solid fa-file-signature"></i>
+                                </div>
+                                <div class="card-trend trend-up">
+                                    <i class="fa-solid fa-arrow-trend-up"></i> +8.1%
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="counter-number" data-target="854">0</div>
+                                <div class="card-title">Active Contracts</div>
+                            </div>
+                            <div class="card-footer-bar">
+                                <span class="bar-fill fill-purple" style="width: 72%;"></span>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: High Risk Vendors -->
+                        <div class="summary-card glass-card hover-lift">
+                            <div class="card-top">
+                                <div class="card-icon-box icon-red">
+                                    <i class="fa-solid fa-triangle-exclamation"></i>
+                                </div>
+                                <div class="card-trend trend-down-good">
+                                    <i class="fa-solid fa-arrow-trend-down"></i> -4.5%
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="counter-number alert-text-red" data-target="37">0</div>
+                                <div class="card-title">High Risk Vendors</div>
+                            </div>
+                            <div class="card-footer-bar">
+                                <span class="bar-fill fill-red" style="width: 32%;"></span>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: Pending Reviews -->
+                        <div class="summary-card glass-card hover-lift">
+                            <div class="card-top">
+                                <div class="card-icon-box icon-amber">
+                                    <i class="fa-solid fa-hourglass-half"></i>
+                                </div>
+                                <div class="card-trend trend-neutral">
+                                    5 Urgent
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="counter-number" data-target="19">0</div>
+                                <div class="card-title">Pending Reviews</div>
+                            </div>
+                            <div class="card-footer-bar">
+                                <span class="bar-fill fill-amber" style="width: 48%;"></span>
+                            </div>
+                        </div>
+
+                        <!-- Card 5: Compliance Score -->
+                        <div class="summary-card glass-card hover-lift">
+                            <div class="card-top">
+                                <div class="card-icon-box icon-green">
+                                    <i class="fa-solid fa-award"></i>
+                                </div>
+                                <div class="card-trend trend-up">
+                                    <i class="fa-solid fa-arrow-trend-up"></i> +2.3%
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="counter-number" data-target="94" data-suffix="%">0%</div>
+                                <div class="card-title">Compliance Score</div>
+                            </div>
+                            <div class="card-footer-bar">
+                                <span class="bar-fill fill-green" style="width: 94%;"></span>
+                            </div>
+                        </div>
+
+                        <!-- Card 6: AI Alerts -->
+                        <div class="summary-card glass-card hover-lift">
+                            <div class="card-top">
+                                <div class="card-icon-box icon-pink">
+                                    <i class="fa-solid fa-bell-concierge"></i>
+                                </div>
+                                <div class="card-trend trend-down">
+                                    3 Critical
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="counter-number alert-text-pink" data-target="14">0</div>
+                                <div class="card-title">AI Risk Alerts</div>
+                            </div>
+                            <div class="card-footer-bar">
+                                <span class="bar-fill fill-pink" style="width: 55%;"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- RISK ANALYTICS GRID (Circular Chart + Risk Distribution) -->
+                <section class="risk-analytics-section">
+                    <div class="analytics-two-col">
+                        
+                        <!-- AI RISK OVERVIEW (Circular Chart) -->
+                        <div class="glass-card analytics-card">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title-text"><i class="fa-solid fa-circle-notch text-gradient"></i> AI Risk Overview</h3>
+                                    <span class="card-subtitle-text">Overall vendor portfolio composite risk score</span>
+                                </div>
+                                <div class="card-actions">
+                                    <span class="badge-tag info">Live AI Engine</span>
+                                </div>
+                            </div>
+                            
+                            <div class="circular-chart-container">
+                                <div class="chart-wrapper">
+                                    <svg class="circular-chart" viewBox="0 0 160 160">
+                                        <path class="circle-bg" d="M80 15.9155 a 64.0845 64.0845 0 0 1 0 128.169 a 64.0845 64.0845 0 0 1 0 -128.169" />
+                                        <path class="circle-progress" id="riskCircleProgress" stroke-dasharray="72, 100" d="M80 15.9155 a 64.0845 64.0845 0 0 1 0 128.169 a 64.0845 64.0845 0 0 1 0 -128.169" />
+                                    </svg>
+                                    <div class="chart-center-content">
+                                        <span class="risk-percentage" id="riskPercentageText">72%</span>
+                                        <span class="risk-badge medium">Medium Risk</span>
+                                        <span class="risk-sub-label">Composite Index</span>
+                                    </div>
+                                </div>
+                                <div class="chart-legend-grid">
+                                    <div class="legend-item">
+                                        <span class="legend-color color-green"></span>
+                                        <div class="legend-info">
+                                            <span class="legend-name">Low Risk (&lt;40%)</span>
+                                            <span class="legend-val">971 Vendors</span>
+                                        </div>
+                                    </div>
+                                    <div class="legend-item">
+                                        <span class="legend-color color-amber"></span>
+                                        <div class="legend-info">
+                                            <span class="legend-name">Medium Risk (40-75%)</span>
+                                            <span class="legend-val">343 Vendors</span>
+                                        </div>
+                                    </div>
+                                    <div class="legend-item">
+                                        <span class="legend-color color-red"></span>
+                                        <div class="legend-info">
+                                            <span class="legend-name">High Risk (&gt;75%)</span>
+                                            <span class="legend-val">114 Vendors</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- RISK DISTRIBUTION (Animated Progress Bars) -->
+                        <div class="glass-card analytics-card">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title-text"><i class="fa-solid fa-chart-pie text-gradient"></i> Portfolio Risk Distribution</h3>
+                                    <span class="card-subtitle-text">Categorized enterprise risk exposure breakdown</span>
+                                </div>
+                                <button class="icon-subtle-btn" title="Refresh Stats" id="btnRefreshRiskDist">
+                                    <i class="fa-solid fa-rotate-right"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="distribution-bars-wrapper">
+                                <!-- Low Risk -->
+                                <div class="dist-bar-item">
+                                    <div class="dist-header">
+                                        <span class="dist-label"><i class="fa-solid fa-shield-check text-green"></i> Low Risk Tier</span>
+                                        <span class="dist-value">68% <small>(971 Vendors)</small></span>
+                                    </div>
+                                    <div class="progress-track">
+                                        <div class="progress-fill fill-green" style="width: 68%;"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Medium Risk -->
+                                <div class="dist-bar-item">
+                                    <div class="dist-header">
+                                        <span class="dist-label"><i class="fa-solid fa-triangle-exclamation text-amber"></i> Medium Risk Tier</span>
+                                        <span class="dist-value">24% <small>(343 Vendors)</small></span>
+                                    </div>
+                                    <div class="progress-track">
+                                        <div class="progress-fill fill-amber" style="width: 24%;"></div>
+                                    </div>
+                                </div>
+
+                                <!-- High Risk -->
+                                <div class="dist-bar-item">
+                                    <div class="dist-header">
+                                        <span class="dist-label"><i class="fa-solid fa-radiation text-red"></i> High Risk Tier</span>
+                                        <span class="dist-value">8% <small>(114 Vendors)</small></span>
+                                    </div>
+                                    <div class="progress-track">
+                                        <div class="progress-fill fill-red" style="width: 8%;"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Risk Domain Metrics -->
+                                <div class="domain-metrics-grid">
+                                    <div class="domain-metric-box">
+                                        <span class="domain-title">Financial Risk</span>
+                                        <span class="domain-score good">88 / 100</span>
+                                    </div>
+                                    <div class="domain-metric-box">
+                                        <span class="domain-title">Cyber Risk</span>
+                                        <span class="domain-score warning">64 / 100</span>
+                                    </div>
+                                    <div class="domain-metric-box">
+                                        <span class="domain-title">ESG Compliance</span>
+                                        <span class="domain-score good">92 / 100</span>
+                                    </div>
+                                    <div class="domain-metric-box">
+                                        <span class="domain-title">Delivery SLA</span>
+                                        <span class="domain-score warning">71 / 100</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- DASHBOARD MAIN LOWER SPLIT: LEFT (TABLES) & RIGHT (AI INSIGHTS & TIMELINE) -->
+                <div class="dashboard-split-layout">
+                    
+                    <!-- LEFT COLUMN: RECENT VENDORS TABLE & UPCOMING CONTRACT EXPIRY -->
+                    <div class="split-left-column">
+                        
+                        <!-- RECENT VENDORS TABLE -->
+                        <div class="glass-card table-card">
+                            <div class="card-header table-header-flex">
+                                <div>
+                                    <h3 class="card-title-text"><i class="fa-solid fa-list-check text-gradient"></i> Recent Monitored Vendors</h3>
+                                    <span class="card-subtitle-text">Real-time status & risk screening overview</span>
+                                </div>
+                                <div class="table-controls">
+                                    <div class="table-search-box">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                        <input type="text" id="tableFilterInput" placeholder="Filter vendors by name, country, status...">
+                                    </div>
+                                    <select id="statusFilterSelect" class="table-select-filter">
+                                        <option value="all">All Statuses</option>
+                                        <option value="Approved">Low Risk (Approved)</option>
+                                        <option value="In Review">Medium Risk (In Review)</option>
+                                        <option value="High Risk">High Risk (Flagged)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table class="custom-table" id="vendorsTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Vendor Name</th>
+                                            <th>Category</th>
+                                            <th>Country</th>
+                                            <th>Risk Score</th>
+                                            <th>Status</th>
+                                            <th>Last Updated</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="vendorsTableBody">
+                                        <!-- Row 1 -->
+                                        <tr>
+                                            <td>
+                                                <div class="vendor-cell">
+                                                    <div class="vendor-avatar bg-blue">TN</div>
+                                                    <div>
+                                                        <span class="vendor-name">TechNova Global Inc.</span>
+                                                        <span class="vendor-id">ID: VND-8841</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Cloud Infrastructure</td>
+                                            <td><span class="flag-icon">🇺🇸</span> USA</td>
+                                            <td>
+                                                <div class="risk-score-pill score-green">
+                                                    <span class="score-num">24%</span>
+                                                    <div class="mini-score-bar"><span style="width:24%;"></span></div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge-status status-approved"><i class="fa-solid fa-circle"></i> Low Risk</span></td>
+                                            <td class="text-muted">10 mins ago</td>
+                                            <td>
+                                                <button class="action-icon-btn view-btn" title="View AI Report" onclick="openVendorDetails('TechNova Global Inc.')">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        
+                                        <!-- Row 2 -->
+                                        <tr>
+                                            <td>
+                                                <div class="vendor-cell">
+                                                    <div class="vendor-avatar bg-amber">AG</div>
+                                                    <div>
+                                                        <span class="vendor-name">Acme Global Logistics</span>
+                                                        <span class="vendor-id">ID: VND-6102</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Freight & Logistics</td>
+                                            <td><span class="flag-icon">🇮🇳</span> India</td>
+                                            <td>
+                                                <div class="risk-score-pill score-amber">
+                                                    <span class="score-num">58%</span>
+                                                    <div class="mini-score-bar"><span style="width:58%;"></span></div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge-status status-review"><i class="fa-solid fa-circle"></i> In Review</span></td>
+                                            <td class="text-muted">1 hour ago</td>
+                                            <td>
+                                                <button class="action-icon-btn view-btn" title="View AI Report" onclick="openVendorDetails('Acme Global Logistics')">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Row 3 -->
+                                        <tr>
+                                            <td>
+                                                <div class="vendor-cell">
+                                                    <div class="vendor-avatar bg-red">AX</div>
+                                                    <div>
+                                                        <span class="vendor-name">Apex Electronics Corp</span>
+                                                        <span class="vendor-id">ID: VND-3392</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Hardware Components</td>
+                                            <td><span class="flag-icon">🇹🇼</span> Taiwan</td>
+                                            <td>
+                                                <div class="risk-score-pill score-red">
+                                                    <span class="score-num">84%</span>
+                                                    <div class="mini-score-bar"><span style="width:84%;"></span></div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge-status status-flagged"><i class="fa-solid fa-circle"></i> High Risk</span></td>
+                                            <td class="text-muted">3 hours ago</td>
+                                            <td>
+                                                <button class="action-icon-btn view-btn" title="View AI Report" onclick="openVendorDetails('Apex Electronics Corp')">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Row 4 -->
+                                        <tr>
+                                            <td>
+                                                <div class="vendor-cell">
+                                                    <div class="vendor-avatar bg-purple">BS</div>
+                                                    <div>
+                                                        <span class="vendor-name">BioSynergy Pharma Ltd</span>
+                                                        <span class="vendor-id">ID: VND-9011</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>Raw Chemicals</td>
+                                            <td><span class="flag-icon">🇩🇪</span> Germany</td>
+                                            <td>
+                                                <div class="risk-score-pill score-green">
+                                                    <span class="score-num">18%</span>
+                                                    <div class="mini-score-bar"><span style="width:18%;"></span></div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge-status status-approved"><i class="fa-solid fa-circle"></i> Approved</span></td>
+                                            <td class="text-muted">5 hours ago</td>
+                                            <td>
+                                                <button class="action-icon-btn view-btn" title="View AI Report" onclick="openVendorDetails('BioSynergy Pharma Ltd')">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Row 5 -->
+                                        <tr>
+                                            <td>
+                                                <div class="vendor-cell">
+                                                    <div class="vendor-avatar bg-blue">XZ</div>
+                                                    <div>
+                                                        <span class="vendor-name">XYZ CyberSecurity Solutions</span>
+                                                        <span class="vendor-id">ID: VND-1205</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>IT Security Audit</td>
+                                            <td><span class="flag-icon">🇬🇧</span> UK</td>
+                                            <td>
+                                                <div class="risk-score-pill score-amber">
+                                                    <span class="score-num">62%</span>
+                                                    <div class="mini-score-bar"><span style="width:62%;"></span></div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge-status status-review"><i class="fa-solid fa-circle"></i> In Review</span></td>
+                                            <td class="text-muted">Yesterday</td>
+                                            <td>
+                                                <button class="action-icon-btn view-btn" title="View AI Report" onclick="openVendorDetails('XYZ CyberSecurity Solutions')">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="table-footer-pagination">
+                                <span class="pagination-info">Showing 1 to 5 of 1,428 Monitored Vendors</span>
+                                <div class="pagination-btns">
+                                    <button class="page-btn disabled"><i class="fa-solid fa-chevron-left"></i> Prev</button>
+                                    <button class="page-btn active">1</button>
+                                    <button class="page-btn">2</button>
+                                    <button class="page-btn">3</button>
+                                    <button class="page-btn">Next <i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- UPCOMING CONTRACT EXPIRY -->
+                        <div class="glass-card table-card">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title-text"><i class="fa-solid fa-clock-rotate-left text-gradient"></i> Upcoming Contract Expirations</h3>
+                                    <span class="card-subtitle-text">Contracts requiring immediate procurement renewal or AI negotiation</span>
+                                </div>
+                                <span class="badge-tag alert">Action Required</span>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table class="custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Vendor</th>
+                                            <th>Contract ID</th>
+                                            <th>Expiry Date</th>
+                                            <th>Priority</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <strong>Supplier ABC Tech</strong>
+                                            </td>
+                                            <td><code class="code-badge">CTR-2024-091</code></td>
+                                            <td>Aug 02, 2026 <span class="days-left alert-red">(12 Days Left)</span></td>
+                                            <td><span class="badge-priority priority-high">High Priority</span></td>
+                                            <td>
+                                                <button class="table-btn-renew" onclick="renewContractModal('CTR-2024-091', 'Supplier ABC Tech')">
+                                                    <i class="fa-solid fa-arrows-rotate"></i> Auto-Renew
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>Apex Hardware Ltd</strong>
+                                            </td>
+                                            <td><code class="code-badge">CTR-2025-442</code></td>
+                                            <td>Aug 18, 2026 <span class="days-left alert-amber">(28 Days Left)</span></td>
+                                            <td><span class="badge-priority priority-medium">Medium</span></td>
+                                            <td>
+                                                <button class="table-btn-renew" onclick="renewContractModal('CTR-2025-442', 'Apex Hardware Ltd')">
+                                                    <i class="fa-solid fa-arrows-rotate"></i> Review
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>CloudScale Networks</strong>
+                                            </td>
+                                            <td><code class="code-badge">CTR-2023-109</code></td>
+                                            <td>Sep 05, 2026 <span class="days-left alert-blue">(46 Days Left)</span></td>
+                                            <td><span class="badge-priority priority-low">Low Priority</span></td>
+                                            <td>
+                                                <button class="table-btn-renew" onclick="renewContractModal('CTR-2023-109', 'CloudScale Networks')">
+                                                    <i class="fa-solid fa-arrows-rotate"></i> Extend
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- RIGHT COLUMN: AI INSIGHTS PANEL & RECENT ACTIVITY TIMELINE -->
+                    <div class="split-right-column">
+                        
+                        <!-- AI INSIGHTS PANEL -->
+                        <div class="glass-card insights-card">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title-text"><i class="fa-solid fa-brain text-gradient"></i> AI Risk Insights & Intelligence</h3>
+                                    <span class="card-subtitle-text">Predictive alerts generated by Neural Risk Engine</span>
+                                </div>
+                                <span class="ai-live-badge"><i class="fa-solid fa-sparkles"></i> Autonomous AI</span>
+                            </div>
+
+                            <div class="insights-stack">
+                                
+                                <!-- Recommendation 1 -->
+                                <div class="insight-item-card border-red">
+                                    <div class="insight-top">
+                                        <span class="insight-category cat-alert"><i class="fa-solid fa-truck-ramp-box"></i> Supply Chain Delay</span>
+                                        <span class="insight-time">10 mins ago</span>
+                                    </div>
+                                    <h4 class="insight-title">Supplier ABC delivery delays detected</h4>
+                                    <p class="insight-desc">
+                                        Predictive AI detected a potential 14-day delivery failure in APAC shipping hubs due to port congestion.
+                                    </p>
+                                    <div class="insight-footer">
+                                        <span class="impact-tag high">High Impact</span>
+                                        <button class="insight-action-link" onclick="triggerAiAction('Redirecting supply chain route...')">
+                                            Reroute Supplier <i class="fa-solid fa-chevron-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Recommendation 2 -->
+                                <div class="insight-item-card border-amber">
+                                    <div class="insight-top">
+                                        <span class="insight-category cat-finance"><i class="fa-solid fa-chart-line-down"></i> Financial Deterioration</span>
+                                        <span class="insight-time">45 mins ago</span>
+                                    </div>
+                                    <h4 class="insight-title">Vendor XYZ financial score dropped</h4>
+                                    <p class="insight-desc">
+                                        Credit rating downgraded from AA to BBB-. Liquidity index fallen by 18% based on latest SEC filings.
+                                    </p>
+                                    <div class="insight-footer">
+                                        <span class="impact-tag medium">Medium Impact</span>
+                                        <button class="insight-action-link" onclick="triggerAiAction('Auditing financial statement...')">
+                                            Audit Credit <i class="fa-solid fa-chevron-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Recommendation 3 -->
+                                <div class="insight-item-card border-blue">
+                                    <div class="insight-top">
+                                        <span class="insight-category cat-contract"><i class="fa-solid fa-file-contract"></i> Contract Expiry Warning</span>
+                                        <span class="insight-time">2 hours ago</span>
+                                    </div>
+                                    <h4 class="insight-title">Contract DEF expires in 12 days</h4>
+                                    <p class="insight-desc">
+                                        AI has auto-drafted renewed SLA terms with an optimized 8.5% cost reduction based on market benchmarks.
+                                    </p>
+                                    <div class="insight-footer">
+                                        <span class="impact-tag low">Savings Opportunity</span>
+                                        <button class="insight-action-link" onclick="triggerAiAction('Applying AI contract terms...')">
+                                            Apply AI Terms <i class="fa-solid fa-chevron-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Recommendation 4 -->
+                                <div class="insight-item-card border-purple">
+                                    <div class="insight-top">
+                                        <span class="insight-category cat-compliance"><i class="fa-solid fa-shield-exclamation"></i> Compliance Failure</span>
+                                        <span class="insight-time">4 hours ago</span>
+                                    </div>
+                                    <h4 class="insight-title">Compliance issue detected</h4>
+                                    <p class="insight-desc">
+                                        ISO 27001 Security Certification expired yesterday for Acme Logistics. Automated compliance notice sent.
+                                    </p>
+                                    <div class="insight-footer">
+                                        <span class="impact-tag high">Critical Compliance</span>
+                                        <button class="insight-action-link" onclick="triggerAiAction('Requesting compliance update...')">
+                                            Request Doc <i class="fa-solid fa-chevron-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- RECENT ACTIVITY TIMELINE -->
+                        <div class="glass-card timeline-card">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title-text"><i class="fa-solid fa-timeline text-gradient"></i> Recent Activity Timeline</h3>
+                                    <span class="card-subtitle-text">Audit trail of enterprise procurement events</span>
+                                </div>
+                            </div>
+
+                            <div class="timeline-wrapper">
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-marker bg-green">
+                                        <i class="fa-solid fa-user-check"></i>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-header">
+                                            <span class="activity-title">Vendor Added</span>
+                                            <span class="activity-time">Just Now</span>
+                                        </div>
+                                        <p class="activity-detail"><strong>TechNova Solutions</strong> was successfully onboarded & passed automated AI background screening.</p>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="timeline-marker bg-purple">
+                                        <i class="fa-solid fa-file-arrow-up"></i>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-header">
+                                            <span class="activity-title">Contract Uploaded</span>
+                                            <span class="activity-time">1 hour ago</span>
+                                        </div>
+                                        <p class="activity-detail">Master Service Agreement <code>MSA-2026-889</code> uploaded for Acme Global with 4 key liability clauses extracted.</p>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="timeline-marker bg-blue">
+                                        <i class="fa-solid fa-microchip"></i>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-header">
+                                            <span class="activity-title">Risk Analysis Completed</span>
+                                            <span class="activity-time">3 hours ago</span>
+                                        </div>
+                                        <p class="activity-detail">Comprehensive AI risk scan completed across <strong>45 Tier-1 electronics suppliers</strong>.</p>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="timeline-marker bg-amber">
+                                        <i class="fa-solid fa-file-shield"></i>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-header">
+                                            <span class="activity-title">Compliance Report Generated</span>
+                                            <span class="activity-time">5 hours ago</span>
+                                        </div>
+                                        <p class="activity-detail">Q3 Procurement Audit & ESG Compliance dossier compiled and dispatched to Board Executives.</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </main>
+
+            <!-- FOOTER SECTION -->
+            <footer class="app-footer">
+                <div class="footer-container">
+                    <div class="footer-left">
+                        <div class="footer-logo">
+                            <i class="fa-solid fa-shield-halved text-gradient"></i>
+                            <span>VendorLens AI</span>
+                        </div>
+                        <p>© 2026 VendorLens AI — AI Procurement & Vendor Risk Intelligence Platform.</p>
+                    </div>
+                    <div class="footer-right">
+                        <div class="system-status-indicator">
+                            <span class="status-pulse"></span>
+                            <span>All AI Systems Operational 🟢</span>
+                        </div>
+                        <div class="footer-links">
+                            <a href="#terms">Terms of Service</a>
+                            <a href="#privacy">Privacy Security</a>
+                            <a href="#api">API v2.4</a>
+                            <a href="#support">SIH 2026 Support</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+
+    <!-- MODAL 1: ADD VENDOR MODAL -->
+    <div class="modal-overlay" id="addVendorModal">
+        <div class="modal-card glass-card">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-building-circle-check text-gradient"></i> Add New Monitored Vendor</h3>
+                <button class="modal-close-btn" id="closeAddVendorModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addVendorForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Vendor Legal Name</label>
+                            <input type="text" id="inputVendorName" required placeholder="e.g. Apex Global Logistics Ltd">
+                        </div>
+                        <div class="form-group">
+                            <label>Industry Category</label>
+                            <select id="inputVendorCategory" required>
+                                <option value="Cloud Infrastructure">Cloud Infrastructure</option>
+                                <option value="Freight & Logistics">Freight & Logistics</option>
+                                <option value="Hardware Components">Hardware Components</option>
+                                <option value="Raw Materials & Chemicals">Raw Materials & Chemicals</option>
+                                <option value="IT & Cyber Security">IT & Cyber Security</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Country of Registration</label>
+                            <input type="text" id="inputVendorCountry" required placeholder="e.g. India, USA, Germany">
+                        </div>
+                        <div class="form-group">
+                            <label>Initial Risk Assessment Tier</label>
+                            <select id="inputVendorStatus">
+                                <option value="Approved">Low Risk (Approved)</option>
+                                <option value="In Review">Medium Risk (In Review)</option>
+                                <option value="High Risk">High Risk (Flagged)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-footer">
+                        <button type="button" class="btn-secondary" id="cancelAddVendor">Cancel</button>
+                        <button type="submit" class="btn-primary-glow">Save & Trigger AI Scan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: UPLOAD CONTRACT MODAL -->
+    <div class="modal-overlay" id="uploadContractModal">
+        <div class="modal-card glass-card">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-file-arrow-up text-gradient"></i> Upload Procurement Contract</h3>
+                <button class="modal-close-btn" id="closeUploadModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="file-drag-area" id="dragArea">
+                    <div class="drag-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                    <h4>Drag & Drop PDF or DOCX Contract Here</h4>
+                    <p>Or click to browse files (Max 50MB per contract)</p>
+                    <input type="file" id="fileInput" hidden accept=".pdf,.docx,.doc">
+                    <button class="btn-secondary" type="button" onclick="document.getElementById('fileInput').click()">Browse File</button>
+                </div>
+                <div class="upload-progress-box" id="uploadProgressBox" style="display: none;">
+                    <div class="progress-info">
+                        <span id="fileNameDisplay">Contract_2026_Master_Agreement.pdf</span>
+                        <span id="uploadPercentDisplay">0%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill fill-blue" id="uploadProgressBar" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: RUN AI ANALYSIS MODAL -->
+    <div class="modal-overlay" id="aiScanModal">
+        <div class="modal-card glass-card text-center">
+            <div class="modal-body py-8">
+                <div class="ai-spinner-container">
+                    <div class="ai-spinner-ring"></div>
+                    <i class="fa-solid fa-brain ai-center-icon"></i>
+                </div>
+                <h3 class="mt-4"><span class="gradient-text">Autonomous AI Risk Scan Running...</span></h3>
+                <p class="text-muted mt-2">Evaluating financial stability, cyber threat vulnerabilities, and regulatory compliance for 1,428 vendors.</p>
+                <div class="progress-track mt-6" style="height: 8px;">
+                    <div class="progress-fill fill-purple animated-stripes" id="aiScanProgressBar" style="width: 0%;"></div>
+                </div>
+                <span id="aiScanStatusText" class="mt-2 inline-block text-sm font-mono text-purple">Initializing Neural Models...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Custom JavaScript -->
+    <script src="dashboard.js"></script>
+</body>
+</html>

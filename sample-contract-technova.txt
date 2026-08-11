@@ -1,0 +1,110 @@
+# VENDOR SERVICE AGREEMENT
+
+**Contract Number:** VSA-2026-001  
+**Effective Date:** August 7, 2026  
+**Expiration Date:** August 7, 2027  
+
+---
+
+## PARTIES
+
+**Client:** VendorLens AI Corp  
+**Vendor:** TechNova Solutions Pvt. Ltd.  
+**Vendor Contact:** Rajesh Kumar, CEO  
+**Email:** rajesh@technova-solutions.com  
+**Phone:** +91-9876543210  
+
+---
+
+## SCOPE OF SERVICES
+
+TechNova Solutions shall provide the following services:
+
+1. **Cloud Infrastructure Management** - AWS hosting, monitoring, and maintenance
+2. **Data Processing Services** - ETL pipelines and data warehousing
+3. **API Development** - RESTful API design and implementation
+4. **24/7 Technical Support** - SLA-based incident response
+
+---
+
+## PRICING AND PAYMENT TERMS
+
+| Service | Monthly Cost | Annual Cost |
+|---------|-------------|-------------|
+| Cloud Infrastructure | $2,500 | $30,000 |
+| Data Processing | $1,800 | $21,600 |
+| API Development | $3,200 | $38,400 |
+| Technical Support | $1,500 | $18,000 |
+| Total | $9,000 | $108,000 |
+
+- Payment due within 30 days of invoice
+- Late payment penalty: 1.5% per month
+- Currency: USD
+
+---
+
+## SERVICE LEVEL AGREEMENT (SLA)
+
+| Metric | Target | Penalty |
+|--------|--------|---------|
+| Uptime | 99.9% | 5% credit per 0.1% below target |
+| Response Time Critical | 15 minutes | $500 per incident |
+| Response Time High | 1 hour | $200 per incident |
+| Response Time Medium | 4 hours | None |
+| Data Backup Frequency | Daily | $1,000 per missed backup |
+
+---
+
+## DATA SECURITY AND COMPLIANCE
+
+1. Vendor shall comply with ISO 27001 security standards
+2. All data shall be encrypted at rest (AES-256) and in transit (TLS 1.3)
+3. Vendor shall undergo annual SOC 2 Type II audit
+4. Personal data handling must comply with GDPR and India DPDP Act 2023
+5. Vendor shall notify Client of any data breach within 72 hours
+6. Vendor shall not share Client data with any third party without written consent
+
+---
+
+## RISK FACTORS
+
+- Dependency Risk: Single vendor for critical cloud infrastructure
+- Geographic Risk: Vendor operates from Bangalore, India (earthquake zone)
+- Financial Risk: Vendor is a startup (founded 2024), limited financial history
+- Compliance Risk: Pending SOC 2 certification (expected Q4 2026)
+- Key Person Risk: CTO handles all architecture decisions independently
+
+---
+
+## TERMINATION CLAUSE
+
+- Either party may terminate with 90 days written notice
+- Immediate termination allowed for material breach
+- Data return or deletion within 30 days of termination
+- Transition assistance for 60 days post-termination
+
+---
+
+## INSURANCE REQUIREMENTS
+
+- Professional Liability: Minimum $2,000,000
+- Cyber Liability: Minimum $5,000,000
+- General Liability: Minimum $1,000,000
+
+---
+
+## SIGNATURES
+
+Client Representative:
+Name: ___________________________
+Title: ___________________________
+Date: ___________________________
+
+Vendor Representative:
+Name: Rajesh Kumar
+Title: CEO, TechNova Solutions
+Date: August 7, 2026
+
+---
+
+This document is confidential and intended solely for the parties named above.

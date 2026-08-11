@@ -126,11 +126,11 @@ export default function UploadPage() {
             <CardContent className="space-y-5">
               <div className="grid gap-4 md:grid-cols-[1fr_1.4fr]">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700">Select vendor</label>
+                  <label className="block text-sm font-medium text-foreground/80">Select vendor</label>
                   <select
                     value={selectedVendorId ?? ''}
                     onChange={(event) => setSelectedVendorId(Number(event.target.value))}
-                    className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm"
+                    className="mt-2 w-full rounded-xl border border-border bg-card px-3 py-3 text-sm"
                   >
                     <option value="">Choose a vendor</option>
                     {vendors.map((vendor) => (
@@ -141,11 +141,11 @@ export default function UploadPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700">Document</label>
-                  <label className="mt-2 flex cursor-pointer flex-col items-center justify-center rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-10 text-center transition hover:border-primary hover:bg-violet-50">
+                  <label className="block text-sm font-medium text-foreground/80">Document</label>
+                  <label className="mt-2 flex cursor-pointer flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-muted p-10 text-center transition hover:border-primary hover:bg-violet-50">
                     <FileUp className="size-10 text-primary" />
-                    <span className="mt-3 text-sm font-medium text-slate-700">Drop your PDF or DOCX contract here</span>
-                    <span className="mt-1 text-sm text-slate-500">or click to browse files</span>
+                    <span className="mt-3 text-sm font-medium text-foreground/80">Drop your PDF or DOCX contract here</span>
+                    <span className="mt-1 text-sm text-muted-foreground">or click to browse files</span>
                     <input type="file" accept=".pdf,.docx" className="hidden" onChange={handleFileChange} />
                   </label>
                 </div>
@@ -158,7 +158,7 @@ export default function UploadPage() {
               ) : null}
 
               <div className="space-y-2">
-                <div className="flex items-center justify-between text-sm text-slate-600">
+                <div className="flex items-center justify-between text-sm text-muted-foreground">
                   <span>Upload progress</span>
                   <span>{progress}%</span>
                 </div>

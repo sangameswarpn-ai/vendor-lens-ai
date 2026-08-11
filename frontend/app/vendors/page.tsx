@@ -141,8 +141,8 @@ export default function VendorsPage() {
         <div className="space-y-6">
           <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <div>
-              <h2 className="text-2xl font-semibold text-slate-900">Vendor Management</h2>
-              <p className="text-sm text-slate-500">Add, update, and delete vendors connected to your contract uploads.</p>
+              <h2 className="text-2xl font-semibold text-foreground">Vendor Management</h2>
+              <p className="text-sm text-muted-foreground">Add, update, and delete vendors connected to your contract uploads.</p>
             </div>
             <Button onClick={() => setShowForm((value) => !value)}>
               <Plus className="mr-2 size-4" /> {showForm ? 'Hide Form' : 'Add Vendor'}
@@ -199,7 +199,7 @@ export default function VendorsPage() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between gap-4">
               <CardTitle>Vendor Directory</CardTitle>
-              <label className="flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-500">
+              <label className="flex items-center gap-2 rounded-xl border border-border bg-muted px-3 py-2 text-sm text-muted-foreground">
                 <Search className="size-4" />
                 <input
                   value={search}
@@ -210,9 +210,9 @@ export default function VendorsPage() {
               </label>
             </CardHeader>
             <CardContent>
-              <div className="overflow-hidden rounded-xl border border-slate-200">
+              <div className="overflow-hidden rounded-xl border border-border">
                 <table className="min-w-full text-sm">
-                  <thead className="bg-slate-50 text-left text-slate-600">
+                  <thead className="bg-muted text-left text-muted-foreground">
                     <tr>
                       <th className="px-4 py-3 font-medium">Vendor</th>
                       <th className="px-4 py-3 font-medium">Email</th>
@@ -223,8 +223,8 @@ export default function VendorsPage() {
                   </thead>
                   <tbody>
                     {filteredVendors.map((vendor) => (
-                      <tr key={vendor.id} className="border-t border-slate-200">
-                        <td className="px-4 py-3 font-medium text-slate-900">{vendor.name}</td>
+                      <tr key={vendor.id} className="border-t border-border">
+                        <td className="px-4 py-3 font-medium text-foreground">{vendor.name}</td>
                         <td className="px-4 py-3">{vendor.contactEmail || '—'}</td>
                         <td className="px-4 py-3">{vendor.phone || '—'}</td>
                         <td className="px-4 py-3">{vendor.category || '—'}</td>

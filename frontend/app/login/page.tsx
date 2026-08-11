@@ -178,14 +178,14 @@ export default function LoginPage() {
           </div>
         </section>
 
-        <section className="flex w-full items-center justify-center bg-slate-50/80 px-4 py-8 sm:px-6 lg:w-[45%] lg:px-8">
+        <section className="flex w-full items-center justify-center bg-muted/80 px-4 py-8 sm:px-6 lg:w-[45%] lg:px-8">
           <Card className="w-full max-w-md border-0 bg-white/85 p-0 shadow-[0_20px_60px_rgba(15,23,42,0.08)] backdrop-blur-xl">
             <CardHeader className="px-6 pt-6 pb-3 text-center sm:px-8 sm:pt-8">
               <div className="mx-auto flex size-12 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-600 to-cyan-500 text-white shadow-lg shadow-indigo-600/20">
                 <ScanLine className="size-6" />
               </div>
-              <CardTitle className="mt-4 text-2xl font-semibold text-slate-900">Welcome Back</CardTitle>
-              <p className="mt-2 text-sm leading-6 text-slate-500">
+              <CardTitle className="mt-4 text-2xl font-semibold text-foreground">Welcome Back</CardTitle>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
                 Sign in to access your procurement intelligence dashboard.
               </p>
             </CardHeader>
@@ -199,11 +199,11 @@ export default function LoginPage() {
 
               <form className="space-y-4" onSubmit={handleLogin}>
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-slate-700" htmlFor="email">
+                  <label className="text-sm font-medium text-foreground/80" htmlFor="email">
                     Work email
                   </label>
                   <div className="relative">
-                    <Mail className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
+                    <Mail className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground/70" />
                     <Input
                       id="email"
                       type="email"
@@ -223,11 +223,11 @@ export default function LoginPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-slate-700" htmlFor="password">
+                  <label className="text-sm font-medium text-foreground/80" htmlFor="password">
                     Password
                   </label>
                   <div className="relative">
-                    <Lock className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
+                    <Lock className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground/70" />
                     <Input
                       id="password"
                       type={showPassword ? 'text' : 'password'}
@@ -246,7 +246,7 @@ export default function LoginPage() {
                       type="button"
                       aria-label={showPassword ? 'Hide password' : 'Show password'}
                       onClick={() => setShowPassword((current) => !current)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 transition hover:text-slate-700"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground/70 transition hover:text-foreground/80"
                     >
                       {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
                     </button>
@@ -255,12 +255,12 @@ export default function LoginPage() {
                 </div>
 
                 <div className="flex items-center justify-between gap-2 text-sm">
-                  <label className="flex items-center gap-2 text-slate-600">
+                  <label className="flex items-center gap-2 text-muted-foreground">
                     <input
                       type="checkbox"
                       checked={rememberMe}
                       onChange={() => setRememberMe((current) => !current)}
-                      className="h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+                      className="h-4 w-4 rounded border-border text-indigo-600 focus:ring-indigo-500"
                     />
                     Remember me
                   </label>
@@ -288,34 +288,34 @@ export default function LoginPage() {
                 </Button>
               </form>
 
-              <div className="my-5 flex items-center gap-3 text-center text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">
-                <div className="h-px flex-1 bg-slate-200" />
+              <div className="my-5 flex items-center gap-3 text-center text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground/70">
+                <div className="h-px flex-1 bg-border" />
                 <span>Or Continue With</span>
-                <div className="h-px flex-1 bg-slate-200" />
+                <div className="h-px flex-1 bg-border" />
               </div>
 
               <div className="space-y-3">
-                <Button type="button" variant="outline" className="h-11 w-full justify-center gap-2 rounded-2xl border-slate-200 bg-white" onClick={() => handleSocialLogin('Google')} disabled={loading}>
+                <Button type="button" variant="outline" className="h-11 w-full justify-center gap-2 rounded-2xl border-border bg-card" onClick={() => handleSocialLogin('Google')} disabled={loading}>
                   <Globe className="size-4" />
                   Continue with Google
                 </Button>
-                <Button type="button" variant="outline" className="h-11 w-full justify-center gap-2 rounded-2xl border-slate-200 bg-white" onClick={() => handleSocialLogin('Microsoft')} disabled={loading}>
+                <Button type="button" variant="outline" className="h-11 w-full justify-center gap-2 rounded-2xl border-border bg-card" onClick={() => handleSocialLogin('Microsoft')} disabled={loading}>
                   <Users className="size-4" />
                   Continue with Microsoft
                 </Button>
               </div>
 
-              <p className="mt-6 text-center text-sm text-slate-500">
+              <p className="mt-6 text-center text-sm text-muted-foreground">
                 Don&apos;t have an account?{' '}
                 <Link href="/signup" className="font-semibold text-indigo-600 transition hover:text-indigo-700">
                   Create Account
                 </Link>
               </p>
 
-              <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-sm text-slate-400">
-                <Link href="/" className="transition hover:text-slate-600">Privacy Policy</Link>
+              <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-sm text-muted-foreground/70">
+                <Link href="/" className="transition hover:text-muted-foreground">Privacy Policy</Link>
                 <span>•</span>
-                <Link href="/" className="transition hover:text-slate-600">Terms of Service</Link>
+                <Link href="/" className="transition hover:text-muted-foreground">Terms of Service</Link>
               </div>
             </CardContent>
           </Card>

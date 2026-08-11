@@ -3,7 +3,7 @@ const { validateVendorInput, validateVendorUpdateInput } = require('../validator
 
 exports.getAllVendors = async (req, res, next) => {
   try {
-    const vendors = await vendorService.getAllVendors();
+    const vendors = await vendorService.getAllVendors(req.user.id);
     res.status(200).json({ success: true, data: vendors });
   } catch (error) {
     next(error);
@@ -12,7 +12,7 @@ exports.getAllVendors = async (req, res, next) => {
 
 exports.getVendorById = async (req, res, next) => {
   try {
-    const vendor = await vendorService.getVendorById(req.params.id);
+    const vendor = await vendorService.getVendorById(req.params.id, req.user.id);
 
     if (!vendor) {
       return res.status(404).json({ success: false, message: 'Vendor not found.' });
@@ -31,7 +31,7 @@ exports.createVendor = async (req, res, next) => {
       return res.status(400).json({ success: false, message: validation.message });
     }
 
-    const vendor = await vendorService.createVendor(req.body);
+    const vendor = await vendorService.createVendor(req.body, req.user.id);
     res.status(201).json({ success: true, data: vendor });
   } catch (error) {
     next(error);
@@ -45,7 +45,7 @@ exports.updateVendor = async (req, res, next) => {
       return res.status(400).json({ success: false, message: validation.message });
     }
 
-    const vendor = await vendorService.updateVendor(req.params.id, req.body);
+    const vendor = await vendorService.updateVendor(req.params.id, req.body, req.user.id);
     if (!vendor) {
       return res.status(404).json({ success: false, message: 'Vendor not found.' });
     }
@@ -58,7 +58,7 @@ exports.updateVendor = async (req, res, next) => {
 
 exports.deleteVendor = async (req, res, next) => {
   try {
-    const vendor = await vendorService.deleteVendor(req.params.id);
+    const vendor = await vendorService.deleteVendor(req.params.id, req.user.id);
     if (!vendor) {
       return res.status(404).json({ success: false, message: 'Vendor not found.' });
     }

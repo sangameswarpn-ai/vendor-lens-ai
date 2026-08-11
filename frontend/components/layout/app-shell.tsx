@@ -39,16 +39,16 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-muted">
       <div className="flex min-h-screen flex-col lg:flex-row">
         <aside className="w-full border-b bg-white/90 p-4 backdrop-blur lg:w-72 lg:border-b-0 lg:border-r">
-          <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-3">
+          <div className="flex items-center gap-3 rounded-2xl border border-border bg-muted p-3">
             <div className="rounded-xl bg-primary p-2 text-primary-foreground">
               <ShieldAlert className="size-5" />
             </div>
             <div>
-              <p className="text-sm font-semibold text-slate-900">VendorLens AI</p>
-              <p className="text-xs text-slate-500">Procurement Intelligence</p>
+              <p className="text-sm font-semibold text-foreground">VendorLens AI</p>
+              <p className="text-xs text-muted-foreground">Procurement Intelligence</p>
             </div>
           </div>
 
@@ -62,8 +62,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    'flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all hover:bg-slate-100',
-                    active ? 'bg-primary text-primary-foreground shadow-sm' : 'text-slate-700',
+                    'flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all hover:bg-muted',
+                    active ? 'bg-primary text-primary-foreground shadow-sm' : 'text-foreground/80',
                   )}
                 >
                   <Icon className="size-4" />
@@ -74,7 +74,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <button
               type="button"
               onClick={handleLogout}
-              className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-700 transition-all hover:bg-rose-50 hover:text-rose-600"
+              className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-foreground/80 transition-all hover:bg-rose-50 hover:text-rose-600"
             >
               <LogOut className="size-4" />
               Logout
@@ -87,10 +87,10 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="text-sm font-medium text-primary">AI-powered procurement workspace</p>
-                <h1 className="text-2xl font-semibold text-slate-950">VendorLens Control Center</h1>
+                <h1 className="text-2xl font-semibold text-foreground">VendorLens Control Center</h1>
               </div>
               <div className="flex items-center gap-3">
-                <label className="flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-500">
+                <label className="flex items-center gap-2 rounded-xl border border-border bg-muted px-3 py-2 text-sm text-muted-foreground">
                   <Search className="size-4" />
                   <input placeholder="Search vendors" className="w-32 bg-transparent outline-none" />
                 </label>

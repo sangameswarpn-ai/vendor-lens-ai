@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { ScanLine, Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { ThemeToggle } from "@/components/app/theme-toggle"
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -58,6 +59,7 @@ export function Navbar() {
         </div>
 
         <div className="hidden items-center gap-2 md:flex">
+          <ThemeToggle />
           <Button variant="ghost" className="text-foreground" onClick={() => router.push('/login')}>
             Login
           </Button>
@@ -91,6 +93,9 @@ export function Navbar() {
               </a>
             ))}
             <div className="mt-2 flex flex-col gap-2">
+              <div className="flex justify-start">
+                <ThemeToggle />
+              </div>
               <Button variant="outline" className="w-full" onClick={() => router.push('/login')}>
                 Login
               </Button>

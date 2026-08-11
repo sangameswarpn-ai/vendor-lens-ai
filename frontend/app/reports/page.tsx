@@ -27,8 +27,8 @@ export default function ReportsPage() {
       <AppShell>
         <div className="space-y-6">
           <div>
-            <h2 className="text-2xl font-semibold text-slate-900">AI Reports</h2>
-            <p className="text-sm text-slate-500">Generate export-ready procurement and compliance summaries.</p>
+            <h2 className="text-2xl font-semibold text-foreground">AI Reports</h2>
+            <p className="text-sm text-muted-foreground">Generate export-ready procurement and compliance summaries.</p>
           </div>
 
           {message ? <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-sm text-emerald-700">{message}</div> : null}
@@ -42,7 +42,7 @@ export default function ReportsPage() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <p className="text-sm text-slate-600">{report.description}</p>
+                  <p className="text-sm text-muted-foreground">{report.description}</p>
                   <div className="flex gap-2">
                     <Button variant="outline" onClick={() => handleExport('PDF', report.title)}>
                       <FileDown className="mr-2 size-4" /> PDF

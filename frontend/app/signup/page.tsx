@@ -56,7 +56,7 @@ export default function SignUpPage() {
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-[radial-gradient(circle_at_top,rgba(109,40,217,0.16),transparent_55%)] px-4 py-10">
-      <Card className="w-full max-w-md border-slate-200 shadow-xl">
+      <Card className="w-full max-w-md border-border shadow-xl">
         <CardHeader className="text-center">
           <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-primary-foreground">
             <ShieldCheck className="h-6 w-6" />
@@ -66,7 +66,7 @@ export default function SignUpPage() {
             Create your account
           </CardTitle>
 
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-muted-foreground">
             Start monitoring vendor risk with AI in minutes.
           </p>
         </CardHeader>
@@ -106,7 +106,7 @@ export default function SignUpPage() {
 
           </form>
 
-          <p className="mt-4 text-center text-sm text-slate-500">
+          <p className="mt-4 text-center text-sm text-muted-foreground">
             Already have an account?{" "}
             <Link href="/login" className="font-medium text-primary">
               Log in

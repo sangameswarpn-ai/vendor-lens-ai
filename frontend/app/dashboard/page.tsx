@@ -51,7 +51,7 @@ export default function DashboardPage() {
                     <div key={index} className="flex-1 rounded-t-xl bg-linear-to-t from-primary to-violet-300" style={{ height: `${height}%` }} />
                   ))}
                 </div>
-                <div className="mt-4 flex items-center justify-between text-sm text-slate-500">
+                <div className="mt-4 flex items-center justify-between text-sm text-muted-foreground">
                   <span>Jan</span>
                   <span>Feb</span>
                   <span>Mar</span>
@@ -68,12 +68,12 @@ export default function DashboardPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 {activity.map((item) => (
-                  <div key={item.title} className="rounded-xl border border-slate-200 p-3">
+                  <div key={item.title} className="rounded-xl border border-border p-3">
                     <div className="flex items-center justify-between">
-                      <p className="font-medium text-slate-900">{item.title}</p>
+                      <p className="font-medium text-foreground">{item.title}</p>
                       <Badge variant="warning">{item.risk}</Badge>
                     </div>
-                    <p className="mt-1 text-sm text-slate-500">{item.detail}</p>
+                    <p className="mt-1 text-sm text-muted-foreground">{item.detail}</p>
                   </div>
                 ))}
               </CardContent>
@@ -86,9 +86,9 @@ export default function DashboardPage() {
               <button type="button" className="text-sm font-medium text-primary" onClick={() => router.push('/vendors')}>View all</button>
             </CardHeader>
             <CardContent>
-              <div className="overflow-hidden rounded-xl border border-slate-200">
+              <div className="overflow-hidden rounded-xl border border-border">
                 <table className="min-w-full text-sm">
-                  <thead className="bg-slate-50 text-left text-slate-600">
+                  <thead className="bg-muted text-left text-muted-foreground">
                     <tr>
                       <th className="px-4 py-3 font-medium">Vendor</th>
                       <th className="px-4 py-3 font-medium">Status</th>
@@ -98,8 +98,8 @@ export default function DashboardPage() {
                   </thead>
                   <tbody>
                     {contracts.map((contract) => (
-                      <tr key={contract.vendor} className="border-t border-slate-200">
-                        <td className="px-4 py-3 font-medium text-slate-900">{contract.vendor}</td>
+                      <tr key={contract.vendor} className="border-t border-border">
+                        <td className="px-4 py-3 font-medium text-foreground">{contract.vendor}</td>
                         <td className="px-4 py-3"><Badge variant={contract.status === 'Active' ? 'success' : contract.status === 'Expiring' ? 'warning' : 'secondary'}>{contract.status}</Badge></td>
                         <td className="px-4 py-3">{contract.expiry}</td>
                         <td className="px-4 py-3">{contract.risk}</td>

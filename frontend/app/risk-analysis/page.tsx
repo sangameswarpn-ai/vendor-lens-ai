@@ -25,8 +25,8 @@ export default function RiskAnalysisPage() {
         <div className="space-y-6">
           <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <div>
-              <h2 className="text-2xl font-semibold text-slate-900">Risk Analysis</h2>
-              <p className="text-sm text-slate-500">AI-generated vendor risk insights and recommendations.</p>
+              <h2 className="text-2xl font-semibold text-foreground">Risk Analysis</h2>
+              <p className="text-sm text-muted-foreground">AI-generated vendor risk insights and recommendations.</p>
             </div>
             <Button onClick={async () => {
               try {

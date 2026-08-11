@@ -1,26 +1,28 @@
 const db = require('../config/db');
 
 class VendorService {
-  async getAllVendors() {
+  async getAllVendors(userId) {
     const { rows } = await db.query(
       `SELECT id, name, category, contact_email AS "contactEmail", phone, address, rating, notes, created_at AS "createdAt", updated_at AS "updatedAt"
        FROM vendors
-       ORDER BY created_at DESC`
+       WHERE created_by = $1
+       ORDER BY created_at DESC`,
+      [userId]
     );
     return rows;
   }
 
-  async getVendorById(id) {
+  async getVendorById(id, userId) {
     const { rows } = await db.query(
       `SELECT id, name, category, contact_email AS "contactEmail", phone, address, rating, notes, created_at AS "createdAt", updated_at AS "updatedAt"
        FROM vendors
-       WHERE id = $1`,
-      [id]
+       WHERE id = $1 AND created_by = $2`,
+      [id, userId]
     );
     return rows[0];
   }
 
-  async createVendor(payload) {
+  async createVendor(payload, userId) {
     const {
       name,
       category = null,
@@ -32,16 +34,16 @@ class VendorService {
     } = payload;
 
     const { rows } = await db.query(
-      `INSERT INTO vendors (name, category, contact_email, phone, address, rating, notes)
-       VALUES ($1, $2, $3, $4, $5, $6, $7)
+      `INSERT INTO vendors (name, category, contact_email, phone, address, rating, notes, created_by)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
        RETURNING id, name, category, contact_email AS "contactEmail", phone, address, rating, notes, created_at AS "createdAt", updated_at AS "updatedAt"`,
-      [name, category, contactEmail, phone, address, rating, notes]
+      [name, category, contactEmail, phone, address, rating, notes, userId]
     );
 
     return rows[0];
   }
 
-  async updateVendor(id, payload) {
+  async updateVendor(id, payload, userId) {
     const allowedFields = {
       name: 'name',
       category: 'category',
@@ -65,14 +67,14 @@ class VendorService {
     });
 
     if (patches.length === 0) {
-      return this.getVendorById(id);
+      return this.getVendorById(id, userId);
     }
 
-    values.push(id);
+    values.push(id, userId);
     const { rows } = await db.query(
       `UPDATE vendors
        SET ${patches.join(', ')}, updated_at = NOW()
-       WHERE id = $${index}
+       WHERE id = $${index} AND created_by = $${index + 1}
        RETURNING id, name, category, contact_email AS "contactEmail", phone, address, rating, notes, created_at AS "createdAt", updated_at AS "updatedAt"`,
       values
     );
@@ -80,12 +82,12 @@ class VendorService {
     return rows[0];
   }
 
-  async deleteVendor(id) {
+  async deleteVendor(id, userId) {
     const { rows } = await db.query(
       `DELETE FROM vendors
-       WHERE id = $1
+       WHERE id = $1 AND created_by = $2
        RETURNING id`,
-      [id]
+      [id, userId]
     );
     return rows[0];
   }
