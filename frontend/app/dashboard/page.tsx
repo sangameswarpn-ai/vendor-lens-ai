@@ -48,7 +48,7 @@ export default function DashboardPage() {
               <CardContent>
                 <div className="flex h-48 items-end gap-3">
                   {[42, 58, 51, 70, 64, 81].map((height, index) => (
-                    <div key={index} className="flex-1 rounded-t-xl bg-linear-to-t from-primary to-violet-300" style={{ height: `${height}%` }} />
+                    <div key={index} className="flex-1 rounded-t-xl bg-linear-to-t from-primary to-emerald-300" style={{ height: `${height}%` }} />
                   ))}
                 </div>
                 <div className="mt-4 flex items-center justify-between text-sm text-muted-foreground">

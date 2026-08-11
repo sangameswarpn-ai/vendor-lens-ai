@@ -142,7 +142,7 @@ export default function UploadPage() {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-foreground/80">Document</label>
-                  <label className="mt-2 flex cursor-pointer flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-muted p-10 text-center transition hover:border-primary hover:bg-violet-50">
+                  <label className="mt-2 flex cursor-pointer flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-muted p-10 text-center transition hover:border-primary hover:bg-primary/5">
                     <FileUp className="size-10 text-primary" />
                     <span className="mt-3 text-sm font-medium text-foreground/80">Drop your PDF or DOCX contract here</span>
                     <span className="mt-1 text-sm text-muted-foreground">or click to browse files</span>
