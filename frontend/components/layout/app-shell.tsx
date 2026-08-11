@@ -41,7 +41,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-muted">
       <div className="flex min-h-screen flex-col lg:flex-row">
-        <aside className="w-full border-b bg-white/90 p-4 backdrop-blur lg:w-72 lg:border-b-0 lg:border-r">
+        <aside className="w-full border-b bg-card/90 p-4 backdrop-blur lg:w-72 lg:border-b-0 lg:border-r">
           <div className="flex items-center gap-3 rounded-2xl border border-border bg-muted p-3">
             <div className="rounded-xl bg-primary p-2 text-primary-foreground">
               <ShieldAlert className="size-5" />
@@ -74,7 +74,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <button
               type="button"
               onClick={handleLogout}
-              className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-foreground/80 transition-all hover:bg-rose-50 hover:text-rose-600"
+              className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-foreground/80 transition-all hover:bg-destructive/10 hover:text-destructive"
             >
               <LogOut className="size-4" />
               Logout
@@ -83,7 +83,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         </aside>
 
         <div className="flex-1">
-          <header className="border-b bg-white/90 px-4 py-4 backdrop-blur sm:px-6">
+          <header className="border-b bg-card/90 px-4 py-4 backdrop-blur sm:px-6">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="text-sm font-medium text-primary">AI-powered procurement workspace</p>
